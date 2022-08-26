@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 
 import 'package:greengrocer/src/screens/sign_up_screen.dart';
-import 'package:greengrocer/src/screens/base_screen.dart';
+import 'package:greengrocer/src/screens/tabs/base_screen.dart';
 
 import 'package:greengrocer/src/widgets/custom_text_field.dart';
 import 'package:greengrocer/src/widgets/custom_elevated_button.dart';

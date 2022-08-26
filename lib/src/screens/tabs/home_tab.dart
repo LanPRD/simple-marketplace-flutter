@@ -101,6 +101,7 @@ class _HomeTabState extends State<HomeTab> {
               height: 40,
               child: ListView.separated(
                 scrollDirection: Axis.horizontal,
+                physics: const BouncingScrollPhysics(),
                 itemBuilder: (_, index) {
                   return CategoryTile(
                     category: app_data.categories[index],
