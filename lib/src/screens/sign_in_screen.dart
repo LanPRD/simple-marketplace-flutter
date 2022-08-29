@@ -6,6 +6,7 @@ import 'package:greengrocer/src/screens/tabs/base_screen.dart';
 
 import 'package:greengrocer/src/widgets/custom_text_field.dart';
 import 'package:greengrocer/src/widgets/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/custom_outlined_button.dart';
 
 import 'package:greengrocer/src/theme/custom_colors.dart';
 
@@ -146,30 +147,15 @@ class SignInScreen extends StatelessWidget {
                     const SizedBox(height: 10),
 
                     // Criar conta
-                    SizedBox(
-                      height: 48,
-                      child: OutlinedButton(
-                        style: OutlinedButton.styleFrom(
-                          side: const BorderSide(
-                            width: 1,
-                            color: Colors.green,
-                          ),
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                        ),
-                        onPressed: () {
-                          Navigator.of(context).push(
-                            MaterialPageRoute(builder: (c) {
-                              return SignUpScreen();
-                            }),
-                          );
-                        },
-                        child: const Text(
-                          'Criar conta',
-                          style: TextStyle(fontSize: 16),
-                        ),
-                      ),
+                    CustomOutlinedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(builder: (c) {
+                            return SignUpScreen();
+                          }),
+                        );
+                      },
+                      textButton: 'Criar conta',
                     ),
                   ],
                 ),

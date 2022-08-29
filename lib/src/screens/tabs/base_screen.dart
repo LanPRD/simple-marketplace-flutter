@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:greengrocer/src/screens/tabs/cart_tab.dart';
 
 import 'package:greengrocer/src/screens/tabs/home_tab.dart';
+import 'package:greengrocer/src/screens/tabs/cart_tab.dart';
+import 'package:greengrocer/src/screens/tabs/profile_tab.dart';
 
 class BaseScreen extends StatefulWidget {
   const BaseScreen({Key? key}) : super(key: key);
@@ -23,15 +24,13 @@ class _BaseScreenState extends State<BaseScreen> {
             currentIndex = index;
           });
         },
-        physics: currentIndex > 0
-            ? const ClampingScrollPhysics()
-            : const NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: [
           const HomeTab(),
           const CartTab(),
-          Container(color: Colors.blue),
           Container(color: Colors.purple),
+          const ProfileTab(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
