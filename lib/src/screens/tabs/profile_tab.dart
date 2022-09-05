@@ -78,63 +78,64 @@ class _ProfileTabState extends State<ProfileTab> {
 
   Future<bool?> updatePassword() {
     return showDialog(
-        context: context,
-        builder: (c) {
-          return Dialog(
-            child: Stack(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.stretch,
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.symmetric(vertical: 12),
-                        child: Text(
-                          "Atualização de senha",
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
+      context: context,
+      builder: (c) {
+        return Dialog(
+          child: Stack(
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.stretch,
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    const Padding(
+                      padding: EdgeInsets.symmetric(vertical: 12),
+                      child: Text(
+                        "Atualização de senha",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const CustomTextField(
-                        icon: Icons.lock,
-                        label: 'Senha atual',
-                        isSecret: true,
-                      ),
-                      const CustomTextField(
-                        icon: Icons.lock_outline,
-                        label: 'Nova senha',
-                        isSecret: true,
-                      ),
-                      const CustomTextField(
-                        icon: Icons.lock_outline,
-                        label: 'Confirmar nova senha',
-                        isSecret: true,
-                      ),
-                      CustomElevatedButton(
-                        onPressed: () {},
-                        text: 'Atualizar',
-                      ),
-                    ],
-                  ),
+                    ),
+                    const CustomTextField(
+                      icon: Icons.lock,
+                      label: 'Senha atual',
+                      isSecret: true,
+                    ),
+                    const CustomTextField(
+                      icon: Icons.lock_outline,
+                      label: 'Nova senha',
+                      isSecret: true,
+                    ),
+                    const CustomTextField(
+                      icon: Icons.lock_outline,
+                      label: 'Confirmar nova senha',
+                      isSecret: true,
+                    ),
+                    CustomElevatedButton(
+                      onPressed: () {},
+                      text: 'Atualizar',
+                    ),
+                  ],
                 ),
-                Positioned(
-                  top: 4,
-                  right: 4,
-                  child: IconButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    icon: const Icon(Icons.close),
-                  ),
+              ),
+              Positioned(
+                top: 4,
+                right: 4,
+                child: IconButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                  },
+                  icon: const Icon(Icons.close),
                 ),
-              ],
-            ),
-          );
-        });
+              ),
+            ],
+          ),
+        );
+      },
+    );
   }
 }
