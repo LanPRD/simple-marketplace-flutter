@@ -1,0 +1,141 @@
+import 'package:flutter/material.dart';
+
+import 'package:greengrocer/src/theme/custom_colors.dart';
+
+class OrderStatus extends StatelessWidget {
+  final String status;
+  final bool isExpired;
+
+  final Map<String, int> allStatus = <String, int>{
+    'pending_payment': 0,
+    'refunded': 1,
+    'paid': 2,
+    'preparing_puchase': 3,
+    'shipping': 4,
+    'delivered': 5,
+  };
+
+  int get currentStatus => allStatus[status]!;
+
+  OrderStatus({
+    Key? key,
+    required this.status,
+    required this.isExpired,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const _StatusDot(
+          isActive: true,
+          title: 'Pedido confirmado',
+        ),
+        const _CustomDivider(),
+        if (currentStatus == 1) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pix estornado',
+            backgroundColor: Colors.orange,
+          ),
+        ] else if (isExpired) ...[
+          const _StatusDot(
+            isActive: true,
+            title: 'Pagamento Pix Vencido',
+            backgroundColor: Colors.red,
+          ),
+        ] else ...[
+          _StatusDot(
+            isActive: currentStatus >= 2,
+            title: 'Pagamento',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 3,
+            title: 'Preparando',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus >= 4,
+            title: 'Enviado',
+          ),
+          const _CustomDivider(),
+          _StatusDot(
+            isActive: currentStatus == 5,
+            title: 'Entregue',
+          ),
+        ],
+      ],
+    );
+  }
+}
+
+class _CustomDivider extends StatelessWidget {
+  const _CustomDivider({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
+      width: 2,
+      height: 8,
+      color: Colors.grey.shade300,
+    );
+  }
+}
+
+class _StatusDot extends StatelessWidget {
+  final String title;
+  final bool isActive;
+  final Color? backgroundColor;
+
+  const _StatusDot({
+    Key? key,
+    required this.isActive,
+    required this.title,
+    this.backgroundColor,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        // Dot
+        Container(
+          alignment: Alignment.center,
+          height: 20,
+          width: 20,
+          decoration: BoxDecoration(
+            shape: BoxShape.circle,
+            border: Border.all(
+              color: CustomColors.customSwatchColor,
+            ),
+            color: isActive
+                ? backgroundColor ?? CustomColors.customSwatchColor
+                : Colors.transparent,
+          ),
+          child: isActive
+              ? const Icon(
+                  Icons.check,
+                  size: 12,
+                  color: Colors.white,
+                )
+              : const SizedBox.shrink(),
+        ),
+
+        const SizedBox(width: 4),
+
+        // Text
+        Expanded(
+          child: Text(
+            title,
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+        ),
+      ],
+    );
+  }
+}

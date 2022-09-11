@@ -1,6 +1,7 @@
 import 'package:greengrocer/src/models/product.dart';
 import 'package:greengrocer/src/models/cart_product.dart';
 import 'package:greengrocer/src/models/user.dart';
+import 'package:greengrocer/src/models/order.dart';
 
 Product apple = Product(
   description:
@@ -86,3 +87,49 @@ User user = User(
   name: 'Allan Prado',
   password: '',
 );
+
+List<Order> orders = [
+  // Pedido 01
+  Order(
+    copyAndPaste: 'q1w2e3r4t5y6',
+    createdAt: DateTime.parse(
+      '2023-06-08 10:00:10.458',
+    ),
+    expiredAt: DateTime.parse(
+      '2023-06-08 11:00:10.458',
+    ),
+    id: 'asd6a54da6s2d1',
+    status: 'pending_payment',
+    total: 11.0,
+    items: [
+      CartProduct(
+        product: apple,
+        quantity: 2,
+      ),
+      CartProduct(
+        product: mango,
+        quantity: 2,
+      ),
+    ],
+  ),
+
+  // Pedido 02
+  Order(
+    copyAndPaste: 'q1w2e3r4t5y6',
+    createdAt: DateTime.parse(
+      '2023-06-08 10:00:10.458',
+    ),
+    expiredAt: DateTime.parse(
+      '2023-06-08 11:00:10.458',
+    ),
+    id: 'a65s4d6a2s1d6a5s',
+    status: 'delivered',
+    total: 11.5,
+    items: [
+      CartProduct(
+        product: guava,
+        quantity: 1,
+      ),
+    ],
+  ),
+];

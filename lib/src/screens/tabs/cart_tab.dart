@@ -4,6 +4,7 @@ import 'package:greengrocer/src/models/cart_product.dart';
 
 import 'package:greengrocer/src/widgets/cart_tile.dart';
 import 'package:greengrocer/src/widgets/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/payment_dialog.dart';
 
 import 'package:greengrocer/src/theme/custom_colors.dart';
 
@@ -100,7 +101,16 @@ class _CartTabState extends State<CartTab> {
                 CustomElevatedButton(
                   text: 'Concluir Pedido',
                   onPressed: () async {
-                    /* bool? result = */ await showOrderConfirmation();
+                    bool? result = await showOrderConfirmation();
+
+                    if (result ?? false) {
+                      showDialog(
+                        context: context,
+                        builder: (_) {
+                          return PaymentDialog(order: app_data.orders.first);
+                        },
+                      );
+                    }
                   },
                   primaryColor: CustomColors.customSwatchColor,
                 )

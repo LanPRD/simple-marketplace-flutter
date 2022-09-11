@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:greengrocer/src/models/product.dart';
 
-import 'package:greengrocer/src/widgets/custom_elevated_button_with_button.dart';
+import 'package:greengrocer/src/widgets/custom_elevated_button_with_icon.dart';
 import 'package:greengrocer/src/widgets/quantity_control.dart';
 
 import 'package:greengrocer/src/theme/custom_colors.dart';
