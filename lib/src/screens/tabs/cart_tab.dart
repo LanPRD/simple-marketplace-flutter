@@ -24,6 +24,7 @@ class _CartTabState extends State<CartTab> {
   void removeItemFromCart(CartProduct cartProduct) {
     setState(() {
       app_data.cartProducts.remove(cartProduct);
+      utils.showToast(message: '${cartProduct.product.name} removido(a) do carrinho');
     });
   }
 
@@ -110,6 +111,8 @@ class _CartTabState extends State<CartTab> {
                           return PaymentDialog(order: app_data.orders.first);
                         },
                       );
+                    } else {
+                      utils.showToast(message: 'Pedido não confirmado', isError: true);
                     }
                   },
                   primaryColor: CustomColors.customSwatchColor,

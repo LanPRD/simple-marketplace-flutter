@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:badges/badges.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:greengrocer/src/utils/utils.dart';
 
 import 'package:greengrocer/src/widgets/category_tile.dart';
 import 'package:greengrocer/src/widgets/item_tile.dart';
@@ -27,6 +28,8 @@ class _HomeTabState extends State<HomeTab> {
   void itemSelectedCArtAnimations(GlobalKey gkImage) {
     runAddToCardAnimation(gkImage);
   }
+
+  final Utils utils = Utils();
 
   @override
   Widget build(BuildContext context) {
