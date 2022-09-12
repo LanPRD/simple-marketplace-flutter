@@ -16,23 +16,21 @@ class CategoryTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: onPressed,
-      child: Align(
-        alignment: Alignment.center,
+    return Align(
+      alignment: Alignment.center,
+      child: InkWell(
+        onTap: onPressed,
+        borderRadius: BorderRadius.circular(8),
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected
-                ? CustomColors.customSwatchColor
-                : Colors.transparent,
+            color: isSelected ? CustomColors.customSwatchColor : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
             category,
             style: TextStyle(
-              color:
-                  isSelected ? Colors.white : CustomColors.customContrastColor,
+              color: isSelected ? Colors.white : CustomColors.customContrastColor,
               fontWeight: FontWeight.bold,
               fontSize: isSelected ? 14 : 12,
             ),
