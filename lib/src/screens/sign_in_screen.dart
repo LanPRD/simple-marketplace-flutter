@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
+import 'package:get/get.dart';
 
-import 'package:greengrocer/src/screens/sign_up_screen.dart';
-import 'package:greengrocer/src/screens/base_screen.dart';
+import 'package:greengrocer/src/routes/app_routes.dart';
 
 import 'package:greengrocer/src/widgets/app_name.dart';
 import 'package:greengrocer/src/widgets/custom_text_field.dart';
@@ -85,9 +85,7 @@ class SignInScreen extends StatelessWidget {
                     CustomElevatedButton(
                         text: 'Entrar',
                         onPressed: () {
-                          Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (c) {
-                            return const BaseScreen();
-                          }));
+                          Get.offNamed(PagesRoutes.baseRoute);
                         }),
 
                     // Esqueceu a senha
@@ -129,11 +127,7 @@ class SignInScreen extends StatelessWidget {
                     // Criar conta
                     CustomOutlinedButton(
                       onPressed: () {
-                        Navigator.of(context).push(
-                          MaterialPageRoute(builder: (c) {
-                            return SignUpScreen();
-                          }),
-                        );
+                        Get.toNamed(PagesRoutes.signUpRoute);
                       },
                       textButton: 'Criar conta',
                     ),
