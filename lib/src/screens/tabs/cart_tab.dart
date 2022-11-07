@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:greengrocer/src/models/cart_product.dart';
 
 import 'package:greengrocer/src/widgets/cart_tile.dart';
-import 'package:greengrocer/src/widgets/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_elevated_button.dart';
 import 'package:greengrocer/src/widgets/payment_dialog.dart';
 
 import 'package:greengrocer/src/theme/custom_colors.dart';
@@ -24,7 +24,8 @@ class _CartTabState extends State<CartTab> {
   void removeItemFromCart(CartProduct cartProduct) {
     setState(() {
       app_data.cartProducts.remove(cartProduct);
-      utils.showToast(message: '${cartProduct.product.name} removido(a) do carrinho');
+      utils.showToast(
+          message: '${cartProduct.product.name} removido(a) do carrinho');
     });
   }
 
@@ -112,7 +113,8 @@ class _CartTabState extends State<CartTab> {
                         },
                       );
                     } else {
-                      utils.showToast(message: 'Pedido não confirmado', isError: true);
+                      utils.showToast(
+                          message: 'Pedido não confirmado', isError: true);
                     }
                   },
                   primaryColor: CustomColors.customSwatchColor,

@@ -3,7 +3,7 @@ import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:greengrocer/src/models/order.dart';
 
-import 'package:greengrocer/src/widgets/custom_outlined_button_with_icon.dart';
+import 'package:greengrocer/src/widgets/common/custom_outlined_button_with_icon.dart';
 
 import 'package:greengrocer/src/utils/utils.dart';
 

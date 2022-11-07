@@ -20,11 +20,6 @@ class _BaseScreenState extends State<BaseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: PageView(
-        onPageChanged: (index) {
-          setState(() {
-            currentIndex = index;
-          });
-        },
         physics: const NeverScrollableScrollPhysics(),
         controller: pageController,
         children: const [

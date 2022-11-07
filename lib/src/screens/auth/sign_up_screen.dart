@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import 'package:greengrocer/src/widgets/custom_text_field.dart';
-import 'package:greengrocer/src/widgets/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_text_field.dart';
 
 import 'package:greengrocer/src/theme/custom_colors.dart';
 

@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/src/widgets/custom_text_field.dart';
-import 'package:greengrocer/src/widgets/custom_outlined_button.dart';
-import 'package:greengrocer/src/widgets/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_elevated_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_outlined_button.dart';
+import 'package:greengrocer/src/widgets/common/custom_text_field.dart';
 
 import 'package:greengrocer/src/utils/app_data.dart' as app_data;
 
