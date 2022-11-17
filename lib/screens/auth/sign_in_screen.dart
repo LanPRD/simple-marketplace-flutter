@@ -2,15 +2,15 @@ import 'package:flutter/material.dart';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:get/get.dart';
 
-import 'package:greengrocer/src/routes/app_routes.dart';
-import 'package:greengrocer/src/screens/auth/controller/auth_controller.dart';
+import 'package:greengrocer/routes/app_routes.dart';
+import 'package:greengrocer/screens/auth/controller/auth_controller.dart';
 
-import 'package:greengrocer/src/widgets/app_name.dart';
-import 'package:greengrocer/src/widgets/common/custom_elevated_button.dart';
-import 'package:greengrocer/src/widgets/common/custom_outlined_button.dart';
-import 'package:greengrocer/src/widgets/common/custom_text_field.dart';
+import 'package:greengrocer/widgets/app_name.dart';
+import 'package:greengrocer/widgets/common/custom_elevated_button.dart';
+import 'package:greengrocer/widgets/common/custom_outlined_button.dart';
+import 'package:greengrocer/widgets/common/custom_text_field.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);

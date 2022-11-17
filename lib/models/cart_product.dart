@@ -1,4 +1,4 @@
-import 'package:greengrocer/src/models/product.dart';
+import 'package:greengrocer/models/product.dart';
 
 class CartProduct {
   Product product;

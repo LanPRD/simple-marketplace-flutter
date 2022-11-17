@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
 
 class CategoryTile extends StatelessWidget {
   final String category;
@@ -24,13 +24,16 @@ class CategoryTile extends StatelessWidget {
         child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
           decoration: BoxDecoration(
-            color: isSelected ? CustomColors.customSwatchColor : Colors.transparent,
+            color: isSelected
+                ? CustomColors.customSwatchColor
+                : Colors.transparent,
             borderRadius: BorderRadius.circular(8),
           ),
           child: Text(
             category,
             style: TextStyle(
-              color: isSelected ? Colors.white : CustomColors.customContrastColor,
+              color:
+                  isSelected ? Colors.white : CustomColors.customContrastColor,
               fontWeight: FontWeight.bold,
               fontSize: isSelected ? 14 : 12,
             ),

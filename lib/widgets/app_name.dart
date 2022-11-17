@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
 
 class AppNameWidget extends StatelessWidget {
   final Color? greenTitleColor;
@@ -20,7 +20,8 @@ class AppNameWidget extends StatelessWidget {
         children: [
           TextSpan(
             text: 'Green',
-            style: TextStyle(color: greenTitleColor ?? CustomColors.customSwatchColor),
+            style: TextStyle(
+                color: greenTitleColor ?? CustomColors.customSwatchColor),
           ),
           TextSpan(
             text: 'grocer',

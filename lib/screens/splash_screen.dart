@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'package:greengrocer/src/routes/app_routes.dart';
+import 'package:greengrocer/routes/app_routes.dart';
 
-import 'package:greengrocer/src/widgets/app_name.dart';
+import 'package:greengrocer/widgets/app_name.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({Key? key}) : super(key: key);

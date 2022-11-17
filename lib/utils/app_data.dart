@@ -1,7 +1,7 @@
-import 'package:greengrocer/src/models/product.dart';
-import 'package:greengrocer/src/models/cart_product.dart';
-import 'package:greengrocer/src/models/user.dart';
-import 'package:greengrocer/src/models/order.dart';
+import 'package:greengrocer/models/product.dart';
+import 'package:greengrocer/models/cart_product.dart';
+import 'package:greengrocer/models/user.dart';
+import 'package:greengrocer/models/order.dart';
 
 Product apple = Product(
   description:

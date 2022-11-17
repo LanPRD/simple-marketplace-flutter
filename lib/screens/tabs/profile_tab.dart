@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/src/widgets/common/custom_elevated_button.dart';
-import 'package:greengrocer/src/widgets/common/custom_outlined_button.dart';
-import 'package:greengrocer/src/widgets/common/custom_text_field.dart';
+import 'package:greengrocer/widgets/common/custom_elevated_button.dart';
+import 'package:greengrocer/widgets/common/custom_outlined_button.dart';
+import 'package:greengrocer/widgets/common/custom_text_field.dart';
 
-import 'package:greengrocer/src/utils/app_data.dart' as app_data;
+import 'package:greengrocer/utils/app_data.dart' as app_data;
 
 class ProfileTab extends StatefulWidget {
   const ProfileTab({Key? key}) : super(key: key);

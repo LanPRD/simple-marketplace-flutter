@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/src/models/product.dart';
+import 'package:greengrocer/models/product.dart';
 
-import 'package:greengrocer/src/widgets/common/custom_elevated_button_with_icon.dart';
-import 'package:greengrocer/src/widgets/quantity_control.dart';
+import 'package:greengrocer/widgets/common/custom_elevated_button_with_icon.dart';
+import 'package:greengrocer/widgets/quantity_control.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
 
-import 'package:greengrocer/src/utils/utils.dart';
+import 'package:greengrocer/utils/utils.dart';
 
 class ProductScreen extends StatefulWidget {
   final Product product;

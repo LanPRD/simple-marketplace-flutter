@@ -3,15 +3,15 @@ import 'package:badges/badges.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 
-import 'package:greengrocer/src/widgets/category_tile.dart';
-import 'package:greengrocer/src/widgets/custom_shimmer.dart';
-import 'package:greengrocer/src/widgets/item_tile.dart';
-import 'package:greengrocer/src/widgets/app_name.dart';
+import 'package:greengrocer/widgets/category_tile.dart';
+import 'package:greengrocer/widgets/custom_shimmer.dart';
+import 'package:greengrocer/widgets/item_tile.dart';
+import 'package:greengrocer/widgets/app_name.dart';
 
-import 'package:greengrocer/src/theme/custom_colors.dart';
-import 'package:greengrocer/src/utils/utils.dart';
+import 'package:greengrocer/theme/custom_colors.dart';
+import 'package:greengrocer/utils/utils.dart';
 
-import 'package:greengrocer/src/utils/app_data.dart' as app_data;
+import 'package:greengrocer/utils/app_data.dart' as app_data;
 
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
@@ -130,7 +130,8 @@ class _HomeTabState extends State<HomeTab> {
                         itemBuilder: (_, index) {
                           return CategoryTile(
                             category: app_data.categories[index],
-                            isSelected: app_data.categories[index] == selectedCategory,
+                            isSelected:
+                                app_data.categories[index] == selectedCategory,
                             onPressed: () {
                               setState(() {
                                 selectedCategory = app_data.categories[index];
@@ -138,7 +139,8 @@ class _HomeTabState extends State<HomeTab> {
                             },
                           );
                         },
-                        separatorBuilder: (_, index) => const SizedBox(width: 10),
+                        separatorBuilder: (_, index) =>
+                            const SizedBox(width: 10),
                         itemCount: app_data.categories.length,
                       )
                     : ListView(
@@ -165,7 +167,8 @@ class _HomeTabState extends State<HomeTab> {
                   ? GridView.builder(
                       padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
                       physics: const BouncingScrollPhysics(),
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,
                         mainAxisSpacing: 10,
                         crossAxisSpacing: 10,
