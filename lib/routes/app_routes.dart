@@ -1,6 +1,6 @@
 import 'package:get/route_manager.dart';
-import 'package:greengrocer/screens/auth/sign_in_screen.dart';
-import 'package:greengrocer/screens/auth/sign_up_screen.dart';
+import 'package:greengrocer/screens/auth/view/sign_in_screen.dart';
+import 'package:greengrocer/screens/auth/view/sign_up_screen.dart';
 import 'package:greengrocer/screens/base_screen.dart';
 import 'package:greengrocer/screens/splash_screen.dart';
 
