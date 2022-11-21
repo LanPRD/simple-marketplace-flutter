@@ -3,6 +3,7 @@ import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:get/get.dart';
 
 import 'package:greengrocer/routes/app_routes.dart';
+import 'package:greengrocer/screens/auth/components/forgot_password_dialog.dart';
 import 'package:greengrocer/screens/auth/controller/auth_controller.dart';
 
 import 'package:greengrocer/widgets/app_name.dart';
@@ -12,6 +13,7 @@ import 'package:greengrocer/widgets/common/custom_text_field.dart';
 
 import 'package:greengrocer/theme/custom_colors.dart';
 import 'package:greengrocer/utils/validators.dart';
+import 'package:greengrocer/utils/utils.dart';
 
 class SignInScreen extends StatelessWidget {
   SignInScreen({Key? key}) : super(key: key);
@@ -21,6 +23,8 @@ class SignInScreen extends StatelessWidget {
   // Controllers
   final emailController = TextEditingController();
   final passwordController = TextEditingController();
+
+  final utils = Utils();
 
   @override
   Widget build(BuildContext context) {
@@ -125,7 +129,23 @@ class SignInScreen extends StatelessWidget {
                       Align(
                         alignment: Alignment.center,
                         child: TextButton(
-                          onPressed: () {},
+                          onPressed: () async {
+                            final bool? result = await showDialog(
+                              context: context,
+                              builder: (_) {
+                                return ForgotPasswordDialog(
+                                  email: emailController.text,
+                                );
+                              },
+                            );
+
+                            if (result ?? false) {
+                              utils.showToast(
+                                message:
+                                    'Um link de recuperação foi enviado para seu email.',
+                              );
+                            }
+                          },
                           child: const Text(
                             'Esqueceu a senha?',
                             style: TextStyle(fontSize: 16, color: Colors.green),
