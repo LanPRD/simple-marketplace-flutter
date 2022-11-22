@@ -25,8 +25,6 @@ class HomeTab extends StatefulWidget {
 }
 
 class _HomeTabState extends State<HomeTab> {
-  String selectedCategory = 'Frutas';
-
   GlobalKey<CartIconKey> globalKeyCartItems = GlobalKey<CartIconKey>();
 
   late Function(GlobalKey) runAddToCardAnimation;
@@ -37,19 +35,11 @@ class _HomeTabState extends State<HomeTab> {
 
   final Utils utils = Utils();
 
-  bool isLoading = true;
-
   @override
   void initState() {
     super.initState();
 
     Get.find<HomeController>();
-
-    Future.delayed(const Duration(seconds: 3), () {
-      setState(() {
-        isLoading = false;
-      });
-    });
   }
 
   @override
@@ -125,86 +115,94 @@ class _HomeTabState extends State<HomeTab> {
             ),
 
             // Categorias
-            Container(
-              padding: const EdgeInsets.only(left: 20),
-              child: SizedBox(
-                height: 40,
-                child: !isLoading
-                    ? ListView.separated(
-                        scrollDirection: Axis.horizontal,
-                        physics: const BouncingScrollPhysics(),
-                        itemBuilder: (_, index) {
-                          return CategoryTile(
-                            category: app_data.categories[index],
-                            isSelected:
-                                app_data.categories[index] == selectedCategory,
-                            onPressed: () {
-                              setState(() {
-                                selectedCategory = app_data.categories[index];
-                              });
+            GetBuilder<HomeController>(
+              builder: (controller) {
+                return Container(
+                  padding: const EdgeInsets.only(left: 20),
+                  child: SizedBox(
+                    height: 40,
+                    child: !controller.isLoading
+                        ? ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            physics: const BouncingScrollPhysics(),
+                            itemBuilder: (_, index) {
+                              return CategoryTile(
+                                category: controller.allCategories[index].title,
+                                isSelected: controller.allCategories[index] ==
+                                    controller.currentCategory,
+                                onPressed: () {
+                                  controller.selectCategory(
+                                    controller.allCategories[index],
+                                  );
+                                },
+                              );
                             },
-                          );
-                        },
-                        separatorBuilder: (_, index) =>
-                            const SizedBox(width: 10),
-                        itemCount: app_data.categories.length,
-                      )
-                    : ListView(
-                        scrollDirection: Axis.horizontal,
-                        children: List.generate(
-                          10,
-                          (index) => Container(
-                            alignment: Alignment.center,
-                            margin: const EdgeInsets.only(right: 10),
-                            child: CustomShimmer(
-                              height: 32,
-                              width: 80,
+                            separatorBuilder: (_, index) =>
+                                const SizedBox(width: 10),
+                            itemCount: controller.allCategories.length,
+                          )
+                        : ListView(
+                            scrollDirection: Axis.horizontal,
+                            children: List.generate(
+                              10,
+                              (index) => Container(
+                                alignment: Alignment.center,
+                                margin: const EdgeInsets.only(right: 10),
+                                child: CustomShimmer(
+                                  height: 32,
+                                  width: 80,
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            ),
+                          ),
+                  ),
+                );
+              },
+            ),
+
+            // Grid
+            GetBuilder<HomeController>(
+              builder: (controller) {
+                return Expanded(
+                  child: !controller.isLoading
+                      ? GridView.builder(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
+                          physics: const BouncingScrollPhysics(),
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            childAspectRatio: 9 / 11.5,
+                          ),
+                          itemCount: app_data.items.length,
+                          itemBuilder: (_, index) {
+                            return ItemTile(
+                              product: app_data.items[index],
+                              cartAnimationMethod: itemSelectedCArtAnimations,
+                            );
+                          },
+                        )
+                      : GridView.count(
+                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
+                          physics: const BouncingScrollPhysics(),
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 10,
+                          crossAxisSpacing: 10,
+                          childAspectRatio: 9 / 11.5,
+                          children: List.generate(
+                            10,
+                            (_) => CustomShimmer(
+                              height: double.infinity,
+                              width: double.infinity,
                               borderRadius: BorderRadius.circular(8),
                             ),
                           ),
                         ),
-                      ),
-              ),
-            ),
-
-            // Grid
-            Expanded(
-              child: !isLoading
-                  ? GridView.builder(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
-                      physics: const BouncingScrollPhysics(),
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 10,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 9 / 11.5,
-                      ),
-                      itemCount: app_data.items.length,
-                      itemBuilder: (_, index) {
-                        return ItemTile(
-                          product: app_data.items[index],
-                          cartAnimationMethod: itemSelectedCArtAnimations,
-                        );
-                      },
-                    )
-                  : GridView.count(
-                      padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
-                      physics: const BouncingScrollPhysics(),
-                      crossAxisCount: 2,
-                      mainAxisSpacing: 10,
-                      crossAxisSpacing: 10,
-                      childAspectRatio: 9 / 11.5,
-                      children: List.generate(
-                        10,
-                        (_) => CustomShimmer(
-                          height: double.infinity,
-                          width: double.infinity,
-                          borderRadius: BorderRadius.circular(8),
-                        ),
-                      ),
-                    ),
-            ),
+                );
+              },
+            )
           ],
         ),
       ),
