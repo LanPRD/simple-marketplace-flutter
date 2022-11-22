@@ -15,8 +15,6 @@ import 'package:greengrocer/screens/home/components/item_tile.dart';
 import 'package:greengrocer/theme/custom_colors.dart';
 import 'package:greengrocer/utils/utils.dart';
 
-import 'package:greengrocer/utils/app_data.dart' as app_data;
-
 class HomeTab extends StatefulWidget {
   const HomeTab({Key? key}) : super(key: key);
 
@@ -30,7 +28,7 @@ class _HomeTabState extends State<HomeTab> {
 
   late Function(GlobalKey) runAddToCardAnimation;
 
-  void itemSelectedCArtAnimations(GlobalKey gkImage) {
+  void itemSelectedCartAnimations(GlobalKey gkImage) {
     runAddToCardAnimation(gkImage);
   }
 
@@ -218,7 +216,7 @@ class _HomeTabState extends State<HomeTab> {
 
                               return ItemTile(
                                 product: controller.allProducts[index],
-                                cartAnimationMethod: itemSelectedCArtAnimations,
+                                cartAnimationMethod: itemSelectedCartAnimations,
                               );
                             },
                           ),
