@@ -42,7 +42,7 @@ class _CartTileState extends State<CartTile> {
 
         // Titulo
         title: Text(
-          widget.cartProduct.product.name,
+          widget.cartProduct.product.itemName,
           style: const TextStyle(
             fontWeight: FontWeight.w500,
           ),

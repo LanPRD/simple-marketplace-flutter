@@ -1,7 +1,8 @@
 import 'package:get/route_manager.dart';
 import 'package:greengrocer/screens/auth/views/sign_in_screen.dart';
 import 'package:greengrocer/screens/auth/views/sign_up_screen.dart';
-import 'package:greengrocer/screens/base_screen.dart';
+import 'package:greengrocer/screens/base/binding/navigation_binding.dart';
+import 'package:greengrocer/screens/base/views/base_screen.dart';
 import 'package:greengrocer/screens/splash_screen.dart';
 import 'package:greengrocer/screens/home/bindings/home_binding.dart';
 
@@ -11,7 +12,10 @@ abstract class AppPages {
     GetPage(
       page: () => const BaseScreen(),
       name: PagesRoutes.baseRoute,
-      bindings: [HomeBinding()],
+      bindings: [
+        HomeBinding(),
+        NavigationBinding(),
+      ],
     ),
     GetPage(page: () => SignInScreen(), name: PagesRoutes.signInRoute),
     GetPage(page: () => SignUpScreen(), name: PagesRoutes.signUpRoute),

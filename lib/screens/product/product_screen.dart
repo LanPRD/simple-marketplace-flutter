@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'package:greengrocer/models/product.dart';
+import 'package:greengrocer/screens/base/controllers/navigation_controller.dart';
 
 import 'package:greengrocer/widgets/common/custom_elevated_button_with_icon.dart';
 import 'package:greengrocer/widgets/quantity_control.dart';
@@ -25,6 +27,8 @@ class _ProductScreenState extends State<ProductScreen> {
   final Utils utils = Utils();
   int carItemQuantity = 1;
 
+  final navigationController = Get.find<NavigationController>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -37,7 +41,7 @@ class _ProductScreenState extends State<ProductScreen> {
               Expanded(
                 child: Hero(
                   tag: widget.product.imageUrl,
-                  child: Image.asset(widget.product.imageUrl),
+                  child: Image.network(widget.product.imageUrl),
                 ),
               ),
 
@@ -65,7 +69,7 @@ class _ProductScreenState extends State<ProductScreen> {
                         children: [
                           Expanded(
                             child: Text(
-                              widget.product.name,
+                              widget.product.itemName,
                               maxLines: 2,
                               overflow: TextOverflow.ellipsis,
                               style: const TextStyle(
@@ -115,7 +119,11 @@ class _ProductScreenState extends State<ProductScreen> {
 
                       // Botao
                       CustomElevatedButtonWithIcon(
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.back();
+                          navigationController
+                              .navigatePageview(NavigationTabs.cart);
+                        },
                         text: "Adicionar ao carrinho",
                         icon: Icons.shopping_cart_outlined,
                       ),

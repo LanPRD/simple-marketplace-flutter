@@ -26,6 +26,7 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   GlobalKey<CartIconKey> globalKeyCartItems = GlobalKey<CartIconKey>();
+  final searchController = TextEditingController();
 
   late Function(GlobalKey) runAddToCardAnimation;
 
@@ -34,13 +35,6 @@ class _HomeTabState extends State<HomeTab> {
   }
 
   final Utils utils = Utils();
-
-  @override
-  void initState() {
-    super.initState();
-
-    Get.find<HomeController>();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -86,32 +80,55 @@ class _HomeTabState extends State<HomeTab> {
         child: Column(
           children: [
             // Campo de pesquisa
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
-              child: TextFormField(
-                decoration: InputDecoration(
-                  filled: true,
-                  fillColor: Colors.white,
-                  isDense: true,
-                  hintText: 'Pesquise aqui...',
-                  hintStyle: TextStyle(
-                    color: Colors.grey.shade400,
-                    fontSize: 14,
-                  ),
-                  prefixIcon: Icon(
-                    Icons.search,
-                    color: CustomColors.customContrastColor,
-                    size: 24,
-                  ),
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(4),
-                    borderSide: const BorderSide(
-                      width: 0,
-                      style: BorderStyle.none,
+            GetBuilder<HomeController>(
+              builder: (controller) {
+                return Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 20),
+                  child: TextFormField(
+                    controller: searchController,
+                    onChanged: (value) {
+                      controller.searchTitle.value = value;
+                    },
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      isDense: true,
+                      hintText: 'Pesquise aqui...',
+                      hintStyle: TextStyle(
+                        color: Colors.grey.shade400,
+                        fontSize: 14,
+                      ),
+                      prefixIcon: Icon(
+                        Icons.search,
+                        color: CustomColors.customContrastColor,
+                        size: 24,
+                      ),
+                      suffixIcon: controller.searchTitle.value.isNotEmpty
+                          ? IconButton(
+                              onPressed: () {
+                                searchController.clear();
+                                controller.searchTitle.value = '';
+                                FocusScope.of(context).unfocus();
+                              },
+                              icon: Icon(
+                                Icons.close,
+                                color: CustomColors.customContrastColor,
+                                size: 22,
+                              ),
+                            )
+                          : null,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(4),
+                        borderSide: const BorderSide(
+                          width: 0,
+                          style: BorderStyle.none,
+                        ),
+                      ),
                     ),
                   ),
-                ),
-              ),
+                );
+              },
             ),
 
             // Categorias
@@ -121,7 +138,7 @@ class _HomeTabState extends State<HomeTab> {
                   padding: const EdgeInsets.only(left: 20),
                   child: SizedBox(
                     height: 40,
-                    child: !controller.isLoading
+                    child: !controller.isCategoryLoading
                         ? ListView.separated(
                             scrollDirection: Axis.horizontal,
                             physics: const BouncingScrollPhysics(),
@@ -165,24 +182,46 @@ class _HomeTabState extends State<HomeTab> {
             GetBuilder<HomeController>(
               builder: (controller) {
                 return Expanded(
-                  child: !controller.isLoading
-                      ? GridView.builder(
-                          padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
-                          physics: const BouncingScrollPhysics(),
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 10,
-                            crossAxisSpacing: 10,
-                            childAspectRatio: 9 / 11.5,
+                  child: !controller.isProductLoading
+                      ? Visibility(
+                          visible: (controller.currentCategory?.items ?? [])
+                              .isNotEmpty,
+                          replacement: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.search_off,
+                                size: 40,
+                                color: CustomColors.customSwatchColor,
+                              ),
+                              const Text('Não há itens para apresentar'),
+                            ],
                           ),
-                          itemCount: app_data.items.length,
-                          itemBuilder: (_, index) {
-                            return ItemTile(
-                              product: app_data.items[index],
-                              cartAnimationMethod: itemSelectedCArtAnimations,
-                            );
-                          },
+                          child: GridView.builder(
+                            padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),
+                            physics: const BouncingScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 10,
+                              crossAxisSpacing: 10,
+                              childAspectRatio: 9 / 11.5,
+                            ),
+                            itemCount: controller.allProducts.length,
+                            itemBuilder: (_, index) {
+                              if ((index + 1) ==
+                                      controller.allProducts.length &&
+                                  !controller.isLastPage) {
+                                controller.loadMoreProducts();
+                              }
+
+                              return ItemTile(
+                                product: controller.allProducts[index],
+                                cartAnimationMethod: itemSelectedCArtAnimations,
+                              );
+                            },
+                          ),
                         )
                       : GridView.count(
                           padding: const EdgeInsets.fromLTRB(16, 8, 16, 20),

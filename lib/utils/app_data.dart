@@ -7,14 +7,14 @@ Product apple = Product(
   description:
       'A melhor maçã da região e que conta com o melhor preço de qualquer quitanda. Este item conta com vitaminas essenciais para o fortalecimento corporal, resultando em uma vida saudável.',
   imageUrl: 'assets/fruits/apple.png',
-  name: 'Maçã',
+  itemName: 'Maçã',
   price: 5.5,
   unit: 'kg',
 );
 
 Product grape = Product(
   imageUrl: 'assets/fruits/grape.png',
-  name: 'Uva',
+  itemName: 'Uva',
   price: 7.4,
   unit: 'kg',
   description:
@@ -23,7 +23,7 @@ Product grape = Product(
 
 Product guava = Product(
   imageUrl: 'assets/fruits/guava.png',
-  name: 'Goiaba',
+  itemName: 'Goiaba',
   price: 11.5,
   unit: 'kg',
   description:
@@ -32,7 +32,7 @@ Product guava = Product(
 
 Product kiwi = Product(
   imageUrl: 'assets/fruits/kiwi.png',
-  name: 'Kiwi',
+  itemName: 'Kiwi',
   price: 2.5,
   unit: 'un',
   description:
@@ -41,7 +41,7 @@ Product kiwi = Product(
 
 Product mango = Product(
   imageUrl: 'assets/fruits/mango.png',
-  name: 'Manga',
+  itemName: 'Manga',
   price: 2.5,
   unit: 'un',
   description:
@@ -50,7 +50,7 @@ Product mango = Product(
 
 Product papaya = Product(
   imageUrl: 'assets/fruits/papaya.png',
-  name: 'Mamão papaya',
+  itemName: 'Mamão papaya',
   price: 8,
   unit: 'kg',
   description:

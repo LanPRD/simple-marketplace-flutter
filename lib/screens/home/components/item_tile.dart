@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:greengrocer/models/product.dart';
 
-import 'package:greengrocer/screens/product_screen.dart';
+import 'package:greengrocer/screens/product/product_screen.dart';
 
 import 'package:greengrocer/theme/custom_colors.dart';
 
@@ -62,13 +62,16 @@ class _ItemTileState extends State<ItemTile> {
                   Expanded(
                     child: Hero(
                       tag: widget.product.imageUrl,
-                      child: Image.asset(widget.product.imageUrl, key: imageGk),
+                      child: Image.network(
+                        widget.product.imageUrl,
+                        key: imageGk,
+                      ),
                     ),
                   ),
 
                   // Nome
                   Text(
-                    widget.product.name,
+                    widget.product.itemName,
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
