@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:badges/badges.dart';
+import 'package:get/get.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:badges/badges.dart';
 
-import 'package:greengrocer/widgets/category_tile.dart';
-import 'package:greengrocer/widgets/custom_shimmer.dart';
-import 'package:greengrocer/widgets/item_tile.dart';
+import 'package:greengrocer/screens/home/controllers/home_controller.dart';
+
 import 'package:greengrocer/widgets/app_name.dart';
+
+import 'package:greengrocer/screens/home/components/category_tile.dart';
+import 'package:greengrocer/screens/home/components/custom_shimmer.dart';
+import 'package:greengrocer/screens/home/components/item_tile.dart';
 
 import 'package:greengrocer/theme/custom_colors.dart';
 import 'package:greengrocer/utils/utils.dart';
@@ -38,6 +42,8 @@ class _HomeTabState extends State<HomeTab> {
   @override
   void initState() {
     super.initState();
+
+    Get.find<HomeController>();
 
     Future.delayed(const Duration(seconds: 3), () {
       setState(() {

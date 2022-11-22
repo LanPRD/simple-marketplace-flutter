@@ -2,7 +2,7 @@ import 'package:get/get.dart';
 import 'package:greengrocer/constants/storage_keys.dart';
 import 'package:greengrocer/models/user.dart';
 import 'package:greengrocer/routes/app_routes.dart';
-import 'package:greengrocer/screens/auth/repository/auth_repository.dart';
+import 'package:greengrocer/screens/auth/repositories/auth_repository.dart';
 import 'package:greengrocer/screens/auth/result/auth_result.dart';
 import 'package:greengrocer/utils/utils.dart';
 

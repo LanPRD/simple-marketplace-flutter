@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 
 import 'package:greengrocer/routes/app_routes.dart';
 import 'package:greengrocer/screens/auth/components/forgot_password_dialog.dart';
-import 'package:greengrocer/screens/auth/controller/auth_controller.dart';
+import 'package:greengrocer/screens/auth/controllers/auth_controller.dart';
 
 import 'package:greengrocer/widgets/app_name.dart';
 import 'package:greengrocer/widgets/common/custom_elevated_button.dart';

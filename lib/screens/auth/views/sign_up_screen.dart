@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
-import 'package:greengrocer/screens/auth/controller/auth_controller.dart';
+import 'package:greengrocer/screens/auth/controllers/auth_controller.dart';
 
 import 'package:greengrocer/widgets/common/custom_elevated_button.dart';
 import 'package:greengrocer/widgets/common/custom_text_field.dart';

@@ -1,13 +1,18 @@
 import 'package:get/route_manager.dart';
-import 'package:greengrocer/screens/auth/view/sign_in_screen.dart';
-import 'package:greengrocer/screens/auth/view/sign_up_screen.dart';
+import 'package:greengrocer/screens/auth/views/sign_in_screen.dart';
+import 'package:greengrocer/screens/auth/views/sign_up_screen.dart';
 import 'package:greengrocer/screens/base_screen.dart';
 import 'package:greengrocer/screens/splash_screen.dart';
+import 'package:greengrocer/screens/home/bindings/home_binding.dart';
 
 abstract class AppPages {
   static final pages = <GetPage>[
     GetPage(page: () => const SplashScreen(), name: PagesRoutes.splashRoute),
-    GetPage(page: () => const BaseScreen(), name: PagesRoutes.baseRoute),
+    GetPage(
+      page: () => const BaseScreen(),
+      name: PagesRoutes.baseRoute,
+      bindings: [HomeBinding()],
+    ),
     GetPage(page: () => SignInScreen(), name: PagesRoutes.signInRoute),
     GetPage(page: () => SignUpScreen(), name: PagesRoutes.signUpRoute),
   ];

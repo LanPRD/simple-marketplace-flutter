@@ -1,6 +1,6 @@
 import 'package:greengrocer/constants/endpoints.dart';
 import 'package:greengrocer/models/user.dart';
-import 'package:greengrocer/screens/auth/repository/auth_errors.dart'
+import 'package:greengrocer/screens/auth/repositories/auth_errors.dart'
     as auth_errors;
 import 'package:greengrocer/screens/auth/result/auth_result.dart';
 import 'package:greengrocer/services/http_manager.dart';

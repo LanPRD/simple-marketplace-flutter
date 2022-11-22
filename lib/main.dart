@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:greengrocer/routes/app_routes.dart';
-import 'package:greengrocer/screens/auth/controller/auth_controller.dart';
+import 'package:greengrocer/screens/auth/controllers/auth_controller.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
