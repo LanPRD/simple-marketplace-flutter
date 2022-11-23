@@ -5,7 +5,7 @@ import 'package:greengrocer/models/cart_product.dart';
 
 import 'package:greengrocer/widgets/common/custom_elevated_button_with_icon.dart';
 import 'package:greengrocer/widgets/order_status.dart';
-import 'package:greengrocer/widgets/payment_dialog.dart';
+import 'package:greengrocer/screens/cart/components/payment_dialog.dart';
 
 import 'package:greengrocer/utils/utils.dart';
 
@@ -35,7 +35,7 @@ class OrderTile extends StatelessWidget {
             children: [
               Text('Nº do pedido: ${order.id}'),
               Text(
-                utils.formatDateTime(order.createdAt),
+                utils.formatDateTime(order.createdAt!),
                 style: const TextStyle(
                   fontSize: 12,
                   color: Colors.black,

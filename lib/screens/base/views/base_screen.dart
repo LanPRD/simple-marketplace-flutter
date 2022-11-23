@@ -4,7 +4,7 @@ import 'package:get/get.dart';
 import 'package:greengrocer/screens/base/controllers/navigation_controller.dart';
 
 import 'package:greengrocer/screens/home/views/home_tab.dart';
-import 'package:greengrocer/screens/tabs/cart_tab.dart';
+import 'package:greengrocer/screens/cart/views/cart_tab.dart';
 import 'package:greengrocer/screens/tabs/orders_tab.dart';
 import 'package:greengrocer/screens/tabs/profile_tab.dart';
 

@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 import 'package:add_to_cart_animation/add_to_cart_icon.dart';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:badges/badges.dart';
+import 'package:greengrocer/screens/base/controllers/navigation_controller.dart';
+import 'package:greengrocer/screens/cart/controllers/cart_controller.dart';
 
 import 'package:greengrocer/screens/home/controllers/home_controller.dart';
 
@@ -25,6 +27,7 @@ class HomeTab extends StatefulWidget {
 class _HomeTabState extends State<HomeTab> {
   GlobalKey<CartIconKey> globalKeyCartItems = GlobalKey<CartIconKey>();
   final searchController = TextEditingController();
+  final navigationController = Get.find<NavigationController>();
 
   late Function(GlobalKey) runAddToCardAnimation;
 
@@ -45,25 +48,31 @@ class _HomeTabState extends State<HomeTab> {
         actions: [
           Padding(
             padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            child: GestureDetector(
-              onTap: () {},
-              child: Badge(
-                badgeColor: CustomColors.customContrastColor,
-                badgeContent: const Text(
-                  '2',
-                  style: TextStyle(
-                    color: Colors.white,
-                    fontSize: 10,
+            child: GetBuilder<CartController>(
+              builder: (controller) {
+                return GestureDetector(
+                  onTap: () {
+                    navigationController.navigatePageview(NavigationTabs.cart);
+                  },
+                  child: Badge(
+                    badgeColor: CustomColors.customContrastColor,
+                    badgeContent: Text(
+                      controller.productCarts.length.toString(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 10,
+                      ),
+                    ),
+                    child: AddToCartIcon(
+                      key: globalKeyCartItems,
+                      icon: Icon(
+                        Icons.shopping_cart,
+                        color: CustomColors.customSwatchColor,
+                      ),
+                    ),
                   ),
-                ),
-                child: AddToCartIcon(
-                  key: globalKeyCartItems,
-                  icon: Icon(
-                    Icons.shopping_cart,
-                    color: CustomColors.customSwatchColor,
-                  ),
-                ),
-              ),
+                );
+              },
             ),
           ),
         ],

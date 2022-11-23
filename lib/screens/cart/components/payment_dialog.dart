@@ -1,5 +1,5 @@
+import 'package:clipboard/clipboard.dart';
 import 'package:flutter/material.dart';
-import 'package:qr_flutter/qr_flutter.dart';
 
 import 'package:greengrocer/models/order.dart';
 
@@ -42,14 +42,13 @@ class PaymentDialog extends StatelessWidget {
                 ),
 
                 // QR Code
-                QrImage(
-                  data: '1234567890',
-                  version: QrVersions.auto,
-                  size: 140.0,
+                Image.memory(
+                  utils.decodeQrCodeImage(order.qrCodeImage),
+                  height: 200,
+                  width: 200,
                 ),
 
                 // Vencimento
-
                 Text(
                   'Vencimento: ${utils.formatDateTime(order.expiredAt)}',
                   style: const TextStyle(
@@ -71,7 +70,11 @@ class PaymentDialog extends StatelessWidget {
                 // Botao copia e cola
                 CustomOutlinedButtonWithIcon(
                   icon: const Icon(Icons.copy, size: 20),
-                  onPressed: () {},
+                  onPressed: () async {
+                    print(order.toString());
+                    await FlutterClipboard.copy(order.copyAndPaste);
+                    utils.showToast(message: 'Código copiado');
+                  },
                   textButton: 'Copiar código PIX',
                 ),
               ],
