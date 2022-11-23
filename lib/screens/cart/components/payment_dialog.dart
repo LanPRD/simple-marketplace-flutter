@@ -71,7 +71,6 @@ class PaymentDialog extends StatelessWidget {
                 CustomOutlinedButtonWithIcon(
                   icon: const Icon(Icons.copy, size: 20),
                   onPressed: () async {
-                    print(order.toString());
                     await FlutterClipboard.copy(order.copyAndPaste);
                     utils.showToast(message: 'Código copiado');
                   },

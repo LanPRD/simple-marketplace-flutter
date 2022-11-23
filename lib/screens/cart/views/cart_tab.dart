@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:greengrocer/screens/cart/components/cart_tile.dart';
-import 'package:greengrocer/screens/cart/components/payment_dialog.dart';
 import 'package:greengrocer/screens/cart/controllers/cart_controller.dart';
 
 import 'package:greengrocer/widgets/common/custom_elevated_button.dart';
@@ -10,7 +9,6 @@ import 'package:greengrocer/widgets/common/custom_elevated_button.dart';
 import 'package:greengrocer/theme/custom_colors.dart';
 
 import 'package:greengrocer/utils/utils.dart';
-import 'package:greengrocer/utils/app_data.dart' as app_data;
 
 class CartTab extends StatefulWidget {
   const CartTab({Key? key}) : super(key: key);
