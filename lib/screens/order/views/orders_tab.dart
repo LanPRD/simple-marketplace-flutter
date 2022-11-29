@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:greengrocer/widgets/order_tile.dart';
+import 'package:greengrocer/screens/order/components/order_tile.dart';
 
 import 'package:greengrocer/utils/app_data.dart' as app_data;
 
