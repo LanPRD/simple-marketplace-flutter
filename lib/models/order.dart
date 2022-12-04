@@ -1,6 +1,4 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:json_annotation/json_annotation.dart';
-
 import 'package:greengrocer/models/cart_product.dart';
 
 part 'order.g.dart';
@@ -8,7 +6,6 @@ part 'order.g.dart';
 @JsonSerializable()
 class Order {
   String id;
-  @JsonKey(name: 'createdDateTime')
   DateTime? createdAt;
   @JsonKey(name: 'due')
   DateTime expiredAt;
@@ -30,6 +27,8 @@ class Order {
     required this.total,
     required this.qrCodeImage,
   });
+
+  bool get isOverDue => expiredAt.isBefore(DateTime.now());
 
   factory Order.fromJson(Map<String, dynamic> json) => _$OrderFromJson(json);
 

@@ -8,9 +8,9 @@ part of 'order.dart';
 
 Order _$OrderFromJson(Map<String, dynamic> json) => Order(
       id: json['id'] as String,
-      createdAt: json['createdDateTime'] == null
+      createdAt: json['createdAt'] == null
           ? null
-          : DateTime.parse(json['createdDateTime'] as String),
+          : DateTime.parse(json['createdAt'] as String),
       expiredAt: DateTime.parse(json['due'] as String),
       items: (json['items'] as List<dynamic>?)
               ?.map((e) => CartProduct.fromJson(e as Map<String, dynamic>))
@@ -24,7 +24,7 @@ Order _$OrderFromJson(Map<String, dynamic> json) => Order(
 
 Map<String, dynamic> _$OrderToJson(Order instance) => <String, dynamic>{
       'id': instance.id,
-      'createdDateTime': instance.createdAt?.toIso8601String(),
+      'createdAt': instance.createdAt?.toIso8601String(),
       'due': instance.expiredAt.toIso8601String(),
       'items': instance.items,
       'status': instance.status,
